@@ -1,0 +1,181 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+
+    <title>Airline Prcie Prediction</title>
+    <link rel="stylesheet" href="/static/CSS/index.CSS" />
+    <link
+      rel="stylesheet"
+      href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/css/bootstrap.min.css"
+      integrity="sha384-xOolHFLEh07PJGoPkLv1IbcEPTNtaed2xpHsD9ESMhqIYd0nLMwNLD69Npy4HI+N"
+      crossorigin="anonymous"
+    />
+  </head>
+  <body>
+    <form action="predict" method="post">
+      <div id="B">
+        <div class="container text-center" id="A1">
+          <div class="row text-center">
+            <h3 class="text-center">
+              Airline
+              <small class="text-muted text-center">Price</small> Prediction
+            </h3>
+          </div>
+        </div>
+        <div id="A3">
+          <div class="container A2">
+            <div class="row">
+              <div class="col-sm">
+                <div class="form-group">
+                  <label for="exampleFormControlSelect1">AIRLINE</label>
+                  <select
+                    class="form-control"
+                    id="exampleFormControlSelect1"
+                    name="airline"
+                  >
+                    <option>Airline</option>
+                    <option value="4">Spice Jet</option>
+                    <option value="0">Air Asia</option>
+                    <option value="2">GO FIRST</option>
+                    <option value="3">Indigo</option>
+                    <option value="1">Air India</option>
+                  </select>
+                </div>
+              </div>
+              <div class="col-sm">
+                <div class="form-group">
+                  <label for="exampleFormControlSelect1">ARRIVAL CITY</label>
+                  <select
+                    class="form-control"
+                    id="exampleFormControlSelect1"
+                    name="Acity"
+                  >
+                    <option>Arrival City</option>
+                    <option value="5">Delhi</option>
+                    <option value="0">Mumbai</option>
+                    <option value="4">Bangalore</option>
+                    <option value="3">Kolkata</option>
+                    <option value="1">Hyderabad</option>
+                    <option value="2">Chennai</option>
+                  </select>
+                </div>
+              </div>
+              <div class="col-sm">
+                <div class="form-group">
+                  <label for="exampleFormControlSelect1">STOPS</label>
+                  <select
+                    class="form-control"
+                    id="exampleFormControlSelect1"
+                    name="stop"
+                  >
+                    <option>Stops</option>
+                    <option value="1">zero</option>
+                    <option value="2">one</option>
+                    <option value="3">two_or_more</option>
+                  </select>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="container A2">
+            <div class="row">
+              <div class="col-sm">
+                <div class="form-group">
+                  <label for="exampleFormControlSelect1">DEPARTURE TIME</label>
+                  <select
+                    class="form-control"
+                    id="exampleFormControlSelect1"
+                    name="Dtime"
+                  >
+                    <option>Departure time</option>
+                    <option value="4">Night</option>
+                    <option value="3">Morning</option>
+                    <option value="5">ThrEarly_Morningee</option>
+                    <option value="0">Afternoon</option>
+                    <option value="1">Evening</option>
+                    <option value="2">Late_Night</option>
+                  </select>
+                </div>
+              </div>
+              <div class="col-sm">
+                <div class="form-group">
+                  <label for="exampleFormControlSelect1">ARRIVAL TIME</label>
+                  <select
+                    class="form-control"
+                    id="exampleFormControlSelect1"
+                    name="Atime"
+                  >
+                    <option>Arrival time</option>
+                    <option value="4">Night</option>
+                    <option value="3">Morning</option>
+                    <option value="5">ThrEarly_Morningee</option>
+                    <option value="0">Afternoon</option>
+                    <option value="1">Evening</option>
+                    <option value="2">Late_Night</option>
+                  </select>
+                </div>
+              </div>
+              <div class="col-sm">
+                <div class="form-group">
+                  <label for="exampleFormControlSelect1">DESTINATION CITY</label>
+                  <select
+                    class="form-control"
+                    id="exampleFormControlSelect1"
+                    name="Dcity"
+                  >
+                    <option>Destination city</option>
+                    <option value="5">Mumbai</option>
+                    <option value="0">Bangalore</option>
+                    <option value="4">Kolkata</option>
+                    <option value="3">Hyderabad</option>
+                    <option value="1">Chennai</option>
+                    <option value="2">Delhi</option>
+                  </select>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="container A2">
+            <div class="row">
+              <div class="col-sm">
+                <div class="form-group">
+                  <label for="exampleFormControlSelect1">YOUR PREFERENCE</label>
+                  <select
+                    class="form-control"
+                    id="exampleFormControlSelect1"
+                    name="Wclass"
+                  >
+                    <option>Select your class</option>
+                    <option value="1">Economy</option>
+                    <option value="0">Business</option>
+                  </select>
+                </div>
+              </div>
+              <div class="col-sm">
+                <div class="form-group">
+                  <button id="button">
+                    SUBMIT
+                  </button>
+                </div>
+              </div>
+              <div class="col-sm">
+                <div class="form-group">
+                  <label for="">THE PREDICTED PRICE </label>
+                  <input class="form-control" type="text" placeholder="Price in INR ₹" readonly value="{{prediction}}">
+                  
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </form>
+    <script
+      src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"
+      integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz"
+      crossorigin="anonymous"
+    ></script>
+  </body>
+</html>
